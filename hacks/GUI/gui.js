@@ -174,7 +174,7 @@ details summary ~ * {
     };
 
     function reactHandler() {
-        return Object.values(document.querySelector('#app > div > div'))[1].children[1]._owner;
+        return Object.values(document.querySelector('#app > div > div'))[1].children[0]._owner;
     }
 
     let autoAnswer, highlightAnswers, choiceESP, autoPassword, chestESP;
@@ -591,14 +591,14 @@ details summary ~ * {
             };
         }
         if (curPage == 'crypto' && autoPassword) {
-            let { stage, correctPassword } = Object.values(document.querySelector('#app > div > div'))[1].children[1]._owner.stateNode.state;
+            let { stage, correctPassword } = Object.values(document.querySelector('#app > div > div'))[1].children[0]._owner.stateNode.state;
             if (stage == "hack") Array.from(document.querySelectorAll('div')).filter(x => x.innerHTML == correctPassword)[0].click();
         };
         if (curPage == 'gold' && chestESP) {
             try {
                 if (reactHandler().stateNode.state.stage == 'prize') {
                     let { choices } = reactHandler().stateNode.state;
-                    let div = document.querySelector("div[class*='regularBody']").children[1];
+                    let div = document.querySelector("div[class*='regularBody']").children[0];
                     if (div) {
                         if (!document.querySelectorAll(".chest-esp").length) choices.forEach((box, i) => {
                             textElement = document.createElement('p');
@@ -614,7 +614,7 @@ details summary ~ * {
                             try { div.children[i].appendChild(textElement); } catch (e) { console.log(e) }
                         });
                         else choices.forEach((box, i) => {
-                            if (div.children.length == 3 && div.children[i].children[1].innerText != box.text) div.children[i].children[1].innerText = box.text;
+                            if (div.children.length == 3 && div.children[i].children[0].innerText != box.text) div.children[i].children[0].innerText = box.text;
                         })
                     }
                 }
